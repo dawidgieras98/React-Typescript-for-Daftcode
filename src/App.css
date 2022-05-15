@@ -28,6 +28,24 @@
   color: #61dafb;
 }
 
+.link-box {
+  display: flex;
+}
+
+.link-box a {
+  margin: 0px 20px;
+  border: 5px solid #61dafb;
+  padding: 15px;
+  border-radius: 5px;
+  color: aliceblue;
+  transition: color 0.5s;
+}
+
+.link-box a:hover {
+  color: #61dafb;
+  transition: color 0.5s;
+}
+
 button {
   margin-bottom: 40px;
   font-size: 15rem;
