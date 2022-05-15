@@ -16,7 +16,7 @@ function App() {
         <button onClick={HandleClick}>Click Me</button>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/dawidgieras98/First-steps-with-react-typescript"
           target="_blank"
           rel="noopener noreferrer"
         >
