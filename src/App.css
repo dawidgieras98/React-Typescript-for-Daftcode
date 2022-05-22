@@ -23,7 +23,19 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+button {
+  margin-bottom: 40px;
+  font-size: 15rem;
+  border-radius: 30px;
+  padding: 3rem;
+  color: aliceblue;
+  background-color: gray;
+  transition: color 0.5s;
+}
+button:hover {
+  color: #61dafb;
+  transition: color 0.5s;
+}
 .App-link {
   color: #61dafb;
 }
