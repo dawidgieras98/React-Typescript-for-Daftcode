@@ -19,14 +19,6 @@ function App() {
           >
             Source Code - Github
           </a>
-          <a
-            className="App-link"
-            href="https://fascinating-sherbet-65057a.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Live Code
-          </a>
         </div>
       </header>
     </div>
