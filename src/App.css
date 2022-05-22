@@ -34,8 +34,8 @@ input {
 }
 
 input:focus {
-    transform: scale(1.05);
-    outline-color: aqua;
+  transform: scale(1.05);
+  outline-color: aqua;
 }
 
 .button-box {

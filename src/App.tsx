@@ -7,13 +7,13 @@ const ControlledInputs = () => {
   const [petName, setPetName] = useState("");
   const [email, setEmail] = useState("");
 
-  const HandleSubmit = (e: any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     // if(e=0){}
   };
 
   return (
-    <form className="Form" onSubmit={HandleSubmit}>
+    <form className="Form" onSubmit={handleSubmit}>
       <fieldset>
         <label htmlFor="name">First name:</label>
         <input
