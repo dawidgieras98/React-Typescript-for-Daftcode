@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./FormInputs.css";
 
 interface InitialInputsConfig {
   firstName: string;
   secondName: string;
   petName: string;
-  email: string;
 }
 
 function getFormInputValues() {
   const storedValues = localStorage.getItem("form");
-  if (!storedValues) return { firstName: "", secondName: "", petName: "", email: "" };
+  if (!storedValues) return { firstName: "", secondName: "", petName: "" };
 
   return JSON.parse(storedValues);
 }
 
 function FormInputs() {
   const [inputValues, setInputValues] = useState<InitialInputsConfig>(getFormInputValues);
-  const [errorAlert, setErrorAlert] = useState<string>("");
+  const [errorAlertFirst, setErrorAlertFirst] = useState<string>("");
+  const [errorAlertSecond, setErrorAlertSecond] = useState<string>("");
+  const [errorAlertPet, setErrorAlertPet] = useState<string>("");
+  const [displayError, setDisplayError] = useState<boolean>(false);
+  const [displayErrorSecond, setDisplayErrorSecond] = useState<boolean>(false);
+  const [displayErrorPet, setDisplayErrorPet] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(inputValues));
@@ -28,7 +32,7 @@ function FormInputs() {
     alert("An error occured on the server. Please try again later.");
   }
 
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function HandleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInputValues((previousValues) => ({
       ...previousValues,
       [e.target.name]: e.target.value,
@@ -37,15 +41,46 @@ function FormInputs() {
     const firstNameLength = inputValues.firstName.length;
     const secondNameLength = inputValues.secondName.length;
     const petNameLength = inputValues.petName.length;
-    const emailLength = inputValues.email.length;
 
+    // FIRST NAME
     if (firstNameLength < 3 || firstNameLength > 20) {
       if (firstNameLength < 3) {
-        setErrorAlert("Your first name is too short");
+        setErrorAlertFirst("Your name is too short");
       }
       if (firstNameLength > 20) {
-        alert("Your first name is too long");
+        setErrorAlertFirst("Your name is too long");
       }
+
+      setDisplayError(true);
+    } else {
+      setDisplayError(false);
+      setErrorAlertFirst("");
+    }
+    // SECOND NAME
+    if (secondNameLength < 4 || secondNameLength > 10) {
+      if (secondNameLength < 4) {
+        setErrorAlertSecond("Your name is too short");
+      }
+      if (secondNameLength > 10) {
+        setErrorAlertSecond("Your name is too long");
+      }
+      setDisplayErrorSecond(true);
+    } else {
+      setDisplayErrorSecond(false);
+      setErrorAlertSecond("");
+    }
+    // PET NAME
+    if (petNameLength <= 4 || petNameLength >= 10) {
+      if (petNameLength <= 4) {
+        setErrorAlertPet("Your pets name is too short");
+      }
+      if (petNameLength >= 10) {
+        setErrorAlertPet("Your pets name is too long");
+      }
+      setDisplayErrorPet(true);
+    } else {
+      setDisplayErrorPet(false);
+      setErrorAlertPet("");
     }
   }
 
@@ -58,10 +93,10 @@ function FormInputs() {
           id="firstName"
           name="firstName"
           value={inputValues.firstName}
-          onChange={handleInputChange}
+          onChange={HandleInputChange}
         />
       </fieldset>
-      <p>{errorAlert}</p>
+      {displayError && <div style={{ color: "red" }}>{errorAlertFirst}</div>}
       <fieldset>
         <label htmlFor="secondName">Name:</label>
         <input
@@ -69,9 +104,10 @@ function FormInputs() {
           id="secondName"
           name="secondName"
           value={inputValues.secondName}
-          onChange={handleInputChange}
+          onChange={HandleInputChange}
         />
       </fieldset>
+      {displayErrorSecond && <div style={{ color: "red" }}>{errorAlertSecond}</div>}
       <fieldset>
         <label htmlFor="petName">Pet's name:</label>
         <input
@@ -79,19 +115,10 @@ function FormInputs() {
           id="petName"
           name="petName"
           value={inputValues.petName}
-          onChange={handleInputChange}
+          onChange={HandleInputChange}
         />
       </fieldset>
-      <fieldset>
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={inputValues.email}
-          onChange={handleInputChange}
-        />
-      </fieldset>
+      {displayErrorPet && <div style={{ color: "red" }}>{errorAlertPet}</div>}
       <div className="button-box">
         <button type="submit">Add person to the tabel</button>
       </div>
@@ -100,103 +127,3 @@ function FormInputs() {
 }
 
 export default FormInputs;
-
-// import React,{useState, useEffect} from "react";
-
-// interface IFormInputValues {
-//   firstName: string;
-//   secondName: string;
-//   petName: string;
-//   email: string;
-// }
-
-// function getFormValues() {
-//   const storedValues = localStorage.getItem("form");
-//   if (!storedValues)
-//     return {
-//       firstName: "",
-//       secondName: "",
-//       name: "",
-//       telephone: "",
-//     };
-//   return JSON.parse(storedValues);
-// }
-
-// function App() {
-//   const [values, setValues] = useState<IFormInputValues>(getFormValues);
-
-//   useEffect(() => {
-//     localStorage.setItem("form", JSON.stringify(values));
-//   }, [values]);
-
-//   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-//     event.preventDefault();
-//     alert("An error occurred on the server. Please try again!!!");
-//   }
-
-//   function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-//     setValues((previousValues) => ({
-//       ...previousValues,
-//       [event.target.name]: event.target.value,
-//     }));
-//   }
-
-//   return (
-//     <main>
-//       <header>
-//         <h1>Caching Form Inputs In React</h1>
-//         <h3>Building offline forms using local storage in react</h3>
-//       </header>
-//       <form onSubmit={handleSubmit}>
-//         <label htmlFor="petName">
-//           petName
-//           <input
-//             autoComplete="off"
-//             type="text"
-//             name="petName"
-//             id="petName"
-//             placeholder="Mr. Anyisob Baidoo"
-//             onChange={handleChange}
-//             value={values.petName}
-//           />
-
-//         </label>
-//         <label htmlFor="firstName">
-//           firstName
-//           <input
-//             placeholder="e.g. user.firstName@domain.com"
-//             type="firstName"
-//             name="firstName"
-//             id="firstName"
-//             onChange={handleChange}
-//             value={values.firstName}
-//           />
-//         </label>
-//         <label htmlFor="email">
-//           Telephone
-//           <input
-//             type="text"
-//             placeholder="e.g. +233(0)-392-498-2882"
-//             name="email"
-//             id="email"
-//             onChange={handleChange}
-//             value={values.email}
-//           />
-//         </label>
-//         <label htmlFor="secondName">
-//           secondName
-//           <textarea
-//             name="secondName"
-//             id="secondName"
-//             value={values.secondName}
-//             onChange={handleChange}
-//           ></textarea>
-//           <small>Your contact message for us</small>
-//         </label>
-//         <button type="submit">Submit</button>
-//       </form>
-//     </main>
-//   );
-// }
-
-// export default App;
