@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./FormInputs.css";
 
 interface InitialInputsConfig {
@@ -37,12 +37,14 @@ function FormInputs() {
       ...previousValues,
       [e.target.name]: e.target.value,
     }));
+  }
 
-    const firstNameLength = inputValues.firstName.length;
-    const secondNameLength = inputValues.secondName.length;
-    const petNameLength = inputValues.petName.length;
+  const firstNameLength = inputValues.firstName.length;
+  const secondNameLength = inputValues.secondName.length;
+  const petNameLength = inputValues.petName.length;
 
-    // FIRST NAME
+  // FIRST NAME
+  function firstNameCheck() {
     if (firstNameLength < 3 || firstNameLength > 20) {
       if (firstNameLength < 3) {
         setErrorAlertFirst("Your name is too short");
@@ -56,7 +58,9 @@ function FormInputs() {
       setDisplayError(false);
       setErrorAlertFirst("");
     }
-    // SECOND NAME
+  }
+  // SECOND NAME
+  function secondNameCheck() {
     if (secondNameLength < 4 || secondNameLength > 10) {
       if (secondNameLength < 4) {
         setErrorAlertSecond("Your name is too short");
@@ -69,7 +73,9 @@ function FormInputs() {
       setDisplayErrorSecond(false);
       setErrorAlertSecond("");
     }
-    // PET NAME
+  }
+  // PET NAME
+  function petNameCheck() {
     if (petNameLength <= 4 || petNameLength >= 10) {
       if (petNameLength <= 4) {
         setErrorAlertPet("Your pets name is too short");
@@ -94,6 +100,7 @@ function FormInputs() {
           name="firstName"
           value={inputValues.firstName}
           onChange={HandleInputChange}
+          onInput={firstNameCheck}
         />
       </fieldset>
       {displayError && <div style={{ color: "red" }}>{errorAlertFirst}</div>}
@@ -105,6 +112,7 @@ function FormInputs() {
           name="secondName"
           value={inputValues.secondName}
           onChange={HandleInputChange}
+          onInput={secondNameCheck}
         />
       </fieldset>
       {displayErrorSecond && <div style={{ color: "red" }}>{errorAlertSecond}</div>}
@@ -116,6 +124,7 @@ function FormInputs() {
           name="petName"
           value={inputValues.petName}
           onChange={HandleInputChange}
+          onInput={petNameCheck}
         />
       </fieldset>
       {displayErrorPet && <div style={{ color: "red" }}>{errorAlertPet}</div>}
