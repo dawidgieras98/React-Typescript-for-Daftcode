@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./FormInputs.css";
+import "./FormInputs.scss";
 
 interface InitialInputsConfig {
   firstName: string;
@@ -103,7 +103,7 @@ function FormInputs() {
           onInput={firstNameCheck}
         />
       </fieldset>
-      {displayError && <div style={{ color: "red" }}>{errorAlertFirst}</div>}
+      {displayError && <p style={{ color: "red" }}>{errorAlertFirst}</p>}
       <fieldset>
         <label htmlFor="secondName">Name:</label>
         <input
@@ -115,7 +115,7 @@ function FormInputs() {
           onInput={secondNameCheck}
         />
       </fieldset>
-      {displayErrorSecond && <div style={{ color: "red" }}>{errorAlertSecond}</div>}
+      {displayErrorSecond && <p style={{ color: "red" }}>{errorAlertSecond}</p>}
       <fieldset>
         <label htmlFor="petName">Pet's name:</label>
         <input
@@ -127,7 +127,7 @@ function FormInputs() {
           onInput={petNameCheck}
         />
       </fieldset>
-      {displayErrorPet && <div style={{ color: "red" }}>{errorAlertPet}</div>}
+      {displayErrorPet && <p style={{ color: "red" }}>{errorAlertPet}</p>}
       <div className="button-box">
         <button type="submit">Add person to the tabel</button>
       </div>
