@@ -12,14 +12,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  color: #282c34;
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    color: #282c34;
+  }
 }
 
 code {

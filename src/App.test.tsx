@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import FormInputs from "./FormInputs";
+import FormInputs from "./Form/FormInputs";
 
 test("renders learn react link", () => {
   render(<FormInputs />);

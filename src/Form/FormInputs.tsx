@@ -16,9 +16,9 @@ function getFormInputValues() {
 
 function FormInputs() {
   const [inputValues, setInputValues] = useState<InitialInputsConfig>(getFormInputValues);
-  const [errorAlertFirst, setErrorAlertFirst] = useState<string>("");
-  const [errorAlertSecond, setErrorAlertSecond] = useState<string>("");
-  const [errorAlertPet, setErrorAlertPet] = useState<string>("");
+  const [errorAlertFirst, setErrorAlertFirst] = useState<string>();
+  const [errorAlertSecond, setErrorAlertSecond] = useState<string>();
+  const [errorAlertPet, setErrorAlertPet] = useState<string>();
   const [displayError, setDisplayError] = useState<boolean>(false);
   const [displayErrorSecond, setDisplayErrorSecond] = useState<boolean>(false);
   const [displayErrorPet, setDisplayErrorPet] = useState<boolean>(false);
@@ -61,8 +61,8 @@ function FormInputs() {
   }
   // SECOND NAME
   function secondNameCheck() {
-    if (secondNameLength < 4 || secondNameLength > 10) {
-      if (secondNameLength < 4) {
+    if (secondNameLength < 3 || secondNameLength > 10) {
+      if (secondNameLength < 3) {
         setErrorAlertSecond("Your name is too short");
       }
       if (secondNameLength > 10) {
@@ -76,9 +76,10 @@ function FormInputs() {
   }
   // PET NAME
   function petNameCheck() {
-    if (petNameLength <= 4 || petNameLength >= 10) {
-      if (petNameLength <= 4) {
+    if (petNameLength < 3 || petNameLength >= 10) {
+      if (petNameLength < 3) {
         setErrorAlertPet("Your pets name is too short");
+        console.log(petNameLength);
       }
       if (petNameLength >= 10) {
         setErrorAlertPet("Your pets name is too long");
@@ -92,6 +93,7 @@ function FormInputs() {
 
   return (
     <form className="Form" onSubmit={handleSubmit}>
+      <h1>Sign In!</h1>
       <fieldset>
         <label htmlFor="firstName">First name:</label>
         <input
