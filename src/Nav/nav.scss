@@ -1,0 +1,31 @@
+@use "/src/default.scss" as d;
+
+nav {
+  margin-bottom: 8rem;
+  background-color: d.$bgColor;
+  display: flex;
+  align-items: center;
+  border: #fff 3px solid;
+  border-radius: d.$borderRad;
+  ul {
+    color: #fff;
+    list-style: none;
+    font-size: d.$fontSizeForm;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+    li {
+      margin: 0 3vw;
+      transition: transform ease-in-out 0.5s;
+      padding: 0.5rem;
+      &:hover {
+        color: d.$accentColor;
+        cursor: pointer;
+        transition: transform ease-in-out 0.5s;
+        transform: scale(1.2);
+        background-color: #fff;
+        border-radius: 20px;
+      }
+    }
+  }
+}

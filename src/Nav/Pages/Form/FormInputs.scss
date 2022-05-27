@@ -1,12 +1,7 @@
-@use "../default.scss" as d;
+@use "/src/default.scss" as d;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 .Form {
-  text-align:center;
+  text-align: center;
   letter-spacing: 0.25rem;
   display: flex;
   height: auto;
@@ -17,10 +12,10 @@
   border: 4px solid rgba(255, 255, 255, 1);
   text-shadow: -1.5px 1.25px 1px d.$bgColor;
   gap: 4rem;
-  h1{
+  h1 {
     color: white;
     margin-top: 0.6rem;
-    border-bottom: 5px dashed d.$accentColor;
+    border-bottom: 3px dashed d.$accentColor;
     padding: 0.2rem;
   }
   fieldset {
@@ -33,10 +28,10 @@
     background-color: d.$accentColor;
     border: 2px solid rgba(0, 0, 0, 1);
     box-shadow: d.$boxShadow;
-  
+
     label {
       font-size: d.$fontSizeForm;
-      @include d.media("<=tablet"){
+      @include d.media("<=tablet") {
         font-size: calc(d.$fontSizeForm - 10%);
       }
     }
@@ -45,7 +40,7 @@
       border-radius: d.$borderRad;
       font-size: d.$fontSizeForm;
       padding: 0.5rem;
-      @include d.media("<=tablet"){
+      @include d.media("<=tablet") {
         font-size: calc(d.$fontSizeForm - 70%);
       }
 
@@ -61,7 +56,6 @@
     align-items: center;
     margin-bottom: 0.6rem;
     height: 10rem;
-
 
     button {
       text-shadow: -1.5px 1.25px 1px d.$bgColor;
@@ -79,9 +73,9 @@
         transition: d.$hoverButtonsTrans;
         transform: d.$hoverButtonsTranzit;
         border: 4px solid d.$focusColor;
-        
+        color: white;
       }
-      @include d.media("<=tablet"){
+      @include d.media("<=tablet") {
         font-size: calc(d.$fontSizeForm - 20%);
       }
     }
@@ -91,10 +85,9 @@
     text-align: center;
     font-size: 1.2rem;
     text-decoration: underline;
-    @include d.media("<=tablet"){
-        font-size: calc(d.$fontSizeForm - 70%);
-        
-      }
+    @include d.media("<=tablet") {
+      font-size: calc(d.$fontSizeForm - 70%);
+    }
   }
   @include d.media("<=tablet") {
     height: auto;
