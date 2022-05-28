@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./FormInputs.scss";
+import "./formInputs.scss";
 
 interface InitialInputsConfig {
   firstName: string;

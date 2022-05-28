@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, Router } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import "../Nav/nav.scss";
 
 const Nav = () => {
   return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            Home
-            <Link to={"/"}></Link>
-          </li>
-          <li>About</li>
-          <li>Register</li>
-          <li>Contact</li>
-        </ul>
-      </nav>
-    </Router>
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/contact">Contact</Link>
+      <Link to="/signin">Sign In</Link>
+    </nav>
   );
 };
 
