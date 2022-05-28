@@ -6,7 +6,7 @@ import "../Nav/nav.scss";
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  let menu;
+  let menu: any;
 
   useEffect(() => {
     function handleResize() {
@@ -33,7 +33,11 @@ const Nav = () => {
   return (
     <IconContext.Provider value={{ className: "hamburger" }}>
       <nav>
-        <FcMenu onClick={() => setShowMenu(!showMenu)} />
+        <FcMenu
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        />
         {menu}
       </nav>
     </IconContext.Provider>
