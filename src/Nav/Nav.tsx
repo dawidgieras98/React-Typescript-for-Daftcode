@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 import "../Nav/nav.scss";
 
 const Nav = () => {
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = useState<boolean>(true);
   let menu: any;
 
   useEffect(() => {

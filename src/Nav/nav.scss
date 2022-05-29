@@ -7,6 +7,12 @@ nav {
   align-items: center;
   border: #fff 3px solid;
   border-radius: d.$borderRad;
+  transition: 0.5s ease-in-out;
+
+  @include d.media("<=tablet") {
+    margin-right: 65vw;
+    flex-direction: column;
+  }
   a {
     color: #fff;
     font-size: d.$fontSizeForm;
@@ -37,8 +43,6 @@ nav {
   .hamburger {
     filter: invert(52%) sepia(62%) saturate(432%) hue-rotate(98deg) brightness(87%) contrast(99%);
     font-size: 3rem;
-  }
-  .menuMask {
-    background-color: #fff;
+    cursor: pointer;
   }
 }
